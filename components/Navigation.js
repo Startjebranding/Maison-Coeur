@@ -5,59 +5,61 @@ import Link from 'next/link'
 import styles from './Navigation.module.css'
 
 export default function Navigation() {
-  const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 60)
-    window.addEventListener('scroll', handleScroll, { passive: true })
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
-
-  useEffect(() => {
-    if (menuOpen) {
-      document.body.style.overflow = 'hidden'
-    } else {
-      document.body.style.overflow = ''
-    }
+    document.body.style.overflow = menuOpen ? 'hidden' : ''
   }, [menuOpen])
 
   return (
-    <header className={`${styles.header} ${scrolled ? styles.scrolled : ''}`}>
-      <nav className={styles.nav}>
-        <Link href="/" className={styles.logo} onClick={() => setMenuOpen(false)}>
-          Maison&nbsp;C&#x153;ur
-        </Link>
+    <header className={styles.header}>
+      {/* Masthead */}
+      <div className={styles.masthead}>
+        <hr className={styles.ruleTop} />
+        <div className={styles.mastheadInner}>
+          <div className={styles.mastheadMeta}>
+            <span>Vol. I, No. 3</span>
+            <span>Spring 2025</span>
+          </div>
 
+          <div className={styles.mastheadCenter}>
+            <p className={styles.gazetteName}>The Maison C&#x153;ur Gazette</p>
+            <p className={styles.tagline}>
+              &#8220;Worn in silence. Felt in full.&#8221;
+            </p>
+          </div>
+
+          <div className={styles.mastheadMeta}>
+            <span>Est. 2025</span>
+            <span>Price: &#8212;</span>
+          </div>
+        </div>
+        <hr className={styles.ruleDouble} />
+      </div>
+
+      {/* Nav bar */}
+      <nav className={styles.nav}>
         <ul className={styles.navLinks}>
-          <li>
-            <Link href="#collection" className={styles.navLink}>Collection</Link>
-          </li>
-          <li>
-            <Link href="#lookbook" className={styles.navLink}>Lookbook</Link>
-          </li>
-          <li>
-            <Link href="#about" className={styles.navLink}>About</Link>
-          </li>
-          <li>
-            <Link href="#contact" className={styles.navLink}>Contact</Link>
-          </li>
+          <li><Link href="/" className={styles.navLink}>Home</Link></li>
+          <li><Link href="#shop" className={styles.navLink}>Shop</Link></li>
+          <li><Link href="#lookbook" className={styles.navLink}>Archive</Link></li>
+          <li><Link href="#contact" className={styles.navLink}>Contact</Link></li>
         </ul>
 
         <button
           className={`${styles.menuToggle} ${menuOpen ? styles.open : ''}`}
           onClick={() => setMenuOpen(!menuOpen)}
-          aria-label={menuOpen ? 'Sluit menu' : 'Open menu'}
+          aria-label="Toggle menu"
         >
-          <span className={styles.bar} />
-          <span className={styles.bar} />
+          <span /><span />
         </button>
       </nav>
+      <hr className={styles.ruleNav} />
 
-      {/* Mobile Menu */}
+      {/* Mobile overlay */}
       <div className={`${styles.mobileMenu} ${menuOpen ? styles.mobileOpen : ''}`}>
         <ul className={styles.mobileLinks}>
-          {['Collection', 'Lookbook', 'About', 'Contact'].map((item) => (
+          {['Home', 'Shop', 'Archive', 'Contact'].map((item) => (
             <li key={item}>
               <Link
                 href={`#${item.toLowerCase()}`}

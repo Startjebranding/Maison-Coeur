@@ -1,34 +1,36 @@
-import { Cormorant_Garamond, Raleway } from 'next/font/google'
+import { Playfair_Display, Inter, Permanent_Marker } from 'next/font/google'
 import './globals.css'
 
-const cormorant = Cormorant_Garamond({
+const playfair = Playfair_Display({
   subsets: ['latin'],
-  weight: ['300', '400', '500'],
+  weight: ['400', '700', '900'],
   style: ['normal', 'italic'],
-  variable: '--font-cormorant',
+  variable: '--font-playfair',
   display: 'swap',
 })
 
-const raleway = Raleway({
+const inter = Inter({
   subsets: ['latin'],
-  weight: ['200', '300', '400'],
-  variable: '--font-raleway',
+  weight: ['300', '400', '500'],
+  variable: '--font-inter',
+  display: 'swap',
+})
+
+const marker = Permanent_Marker({
+  subsets: ['latin'],
+  weight: ['400'],
+  variable: '--font-marker',
   display: 'swap',
 })
 
 export const metadata = {
-  title: 'Maison Cœur — Luxury Fashion',
-  description: 'Maison Cœur is an ode to silence, to restraint, to the poetry hidden in the everyday.',
-  openGraph: {
-    title: 'Maison Cœur',
-    description: 'An ode to silence and restraint.',
-    type: 'website',
-  },
+  title: 'Maison Cœur — The Gazette',
+  description: 'New drop live. Limited pieces. Maison Cœur SS25.',
 }
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="nl" className={`${cormorant.variable} ${raleway.variable}`}>
+    <html lang="nl" className={`${playfair.variable} ${inter.variable} ${marker.variable}`}>
       <body>{children}</body>
     </html>
   )

@@ -1,0 +1,228 @@
+.section {
+  padding: 2rem;
+  background: var(--paper-dark);
+  border-top: 3px solid var(--ink);
+  border-bottom: 3px solid var(--ink);
+}
+
+.inner {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.inner.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Breaking bar */
+.breakingBar {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  background: var(--ink);
+  padding: 0.4rem 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.breakingLabel {
+  font-family: var(--font-sans);
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--neon-yellow);
+  white-space: nowrap;
+}
+
+.breakingText {
+  font-family: var(--font-sans);
+  font-size: 0.62rem;
+  letter-spacing: 0.1em;
+  color: rgba(244, 240, 230, 0.55);
+}
+
+/* Card */
+.card {
+  position: relative;
+  border: 1px solid var(--rule);
+  background: var(--paper);
+  overflow: hidden;
+}
+
+/* Stamp */
+.stamp {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.75rem;
+  z-index: 10;
+  font-family: var(--font-sans);
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--neon-yellow);
+  border: 2px solid var(--neon-yellow);
+  padding: 0.25rem 0.6rem;
+  transform: rotate(3deg);
+  opacity: 0.9;
+}
+
+/* Graffiti tag */
+.grafTag {
+  position: absolute;
+  bottom: 1.5rem;
+  left: calc(50% - 1.5rem);
+  z-index: 10;
+  font-family: var(--font-graffiti);
+  font-size: 1.8rem;
+  color: var(--neon-pink);
+  transform: rotate(-6deg);
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.cardGrid {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+}
+
+/* Image */
+.cardImage {
+  position: relative;
+  min-height: 520px;
+  overflow: hidden;
+  background: var(--paper-mid);
+}
+
+.image {
+  object-fit: cover;
+  object-position: center top;
+  filter: grayscale(18%);
+  transition: transform 0.9s ease;
+}
+
+.cardImage:hover .image { transform: scale(1.04); }
+
+.accentLine {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--neon-blue);
+}
+
+/* Content */
+.cardContent {
+  padding: 2.5rem 2rem 2rem;
+  display: flex;
+  flex-direction: column;
+  border-left: 1px solid var(--rule);
+}
+
+.issue {
+  font-family: var(--font-sans);
+  font-size: 0.58rem;
+  font-weight: 500;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--ink-light);
+  margin-bottom: 1rem;
+}
+
+.title {
+  font-family: var(--font-serif);
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+  font-weight: 900;
+  line-height: 1.05;
+  color: var(--ink);
+  margin-bottom: 1.25rem;
+}
+
+.rule {
+  border: none;
+  border-top: 1px solid var(--rule);
+  margin: 0 0 1.25rem;
+}
+
+.body {
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  line-height: 1.8;
+  color: var(--ink-mid);
+  margin-bottom: 1rem;
+}
+
+.priceBlock {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin: 1.5rem 0;
+}
+
+.price {
+  font-family: var(--font-serif);
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.stock {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-sans);
+  font-size: 0.6rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--ink-mid);
+}
+
+.stockDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #3aaf5c;
+  flex-shrink: 0;
+}
+
+.cta {
+  display: inline-block;
+  font-family: var(--font-sans);
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--paper);
+  background: var(--ink);
+  padding: 0.7rem 1.5rem;
+  margin-top: auto;
+  align-self: flex-start;
+  transition: background 0.2s, color 0.2s;
+  border: 2px solid var(--ink);
+}
+
+.cta:hover {
+  background: var(--neon-yellow);
+  color: var(--ink);
+  border-color: var(--neon-yellow);
+}
+
+@media (max-width: 768px) {
+  .section { padding: 1.5rem 1rem; }
+
+  .cardGrid { grid-template-columns: 1fr; }
+
+  .cardImage { min-height: 55vw; }
+
+  .cardContent {
+    border-left: none;
+    border-top: 1px solid var(--rule);
+    padding: 1.5rem 1rem;
+  }
+
+  .stamp { top: 1rem; right: 1rem; }
+  .grafTag { left: auto; right: 1rem; bottom: 1rem; }
+}

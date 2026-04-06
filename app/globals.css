@@ -1,124 +1,121 @@
-/* ================================
-   MAISON CŒUR — Global Styles
-   ================================ */
+/* ============================================
+   MAISON CŒUR — THE GAZETTE
+   Newspaper × Streetwear Design System
+   ============================================ */
 
 :root {
-  /* Colors */
-  --color-black: #0a0a0a;
-  --color-white: #fafaf8;
-  --color-cream: #f2f0ec;
-  --color-warm-gray: #c8c5be;
-  --color-mid-gray: #8a8780;
-  --color-dark-gray: #2a2826;
-  --color-overlay: rgba(10, 10, 10, 0.45);
+  /* Paper */
+  --paper:      #f4f0e6;
+  --paper-dark: #ece8db;
+  --paper-mid:  #e4dfd0;
 
-  /* Typography */
-  --font-serif: var(--font-cormorant), 'Cormorant Garamond', Georgia, serif;
-  --font-sans: var(--font-raleway), 'Raleway', 'Helvetica Neue', Arial, sans-serif;
+  /* Ink */
+  --ink:        #1a1a17;
+  --ink-mid:    #3d3d38;
+  --ink-light:  #6e6e66;
+  --rule:       rgba(26, 26, 23, 0.18);
+
+  /* Neon accents — use sparingly */
+  --neon-yellow: #e6f200;
+  --neon-pink:   #ff1f6e;
+  --neon-blue:   #00cfff;
+
+  /* Type */
+  --font-serif:    var(--font-playfair), 'Playfair Display', Georgia, serif;
+  --font-sans:     var(--font-inter), 'Inter', 'Helvetica Neue', sans-serif;
+  --font-graffiti: var(--font-marker), 'Permanent Marker', cursive;
 
   /* Spacing */
-  --spacing-xs: 0.5rem;
-  --spacing-sm: 1rem;
-  --spacing-md: 2rem;
-  --spacing-lg: 4rem;
-  --spacing-xl: 8rem;
-  --spacing-xxl: 14rem;
-
-  /* Transitions */
-  --transition-slow: 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  --transition-medium: 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  --transition-fast: 0.25s ease;
+  --gap: 1.5rem;
+  --rule-width: 1px;
 }
 
-/* Reset */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+/* ---- Reset ---- */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-html {
-  scroll-behavior: smooth;
-  font-size: 16px;
-}
+html { scroll-behavior: smooth; }
 
 body {
-  background-color: var(--color-white);
-  color: var(--color-black);
+  background-color: var(--paper);
+  color: var(--ink);
   font-family: var(--font-sans);
-  font-weight: 300;
-  line-height: 1.7;
+  font-weight: 400;
+  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   cursor: none;
   overflow-x: hidden;
 }
 
-/* Scrollbar */
-::-webkit-scrollbar {
-  width: 4px;
+/* Paper grain overlay */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.88' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity: 0.038;
+  pointer-events: none;
+  z-index: 9000;
+  mix-blend-mode: multiply;
 }
-::-webkit-scrollbar-track {
-  background: var(--color-cream);
+
+/* ---- Typography ---- */
+h1, h2, h3, h4, h5 {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  line-height: 1.08;
+  letter-spacing: -0.01em;
 }
-::-webkit-scrollbar-thumb {
-  background: var(--color-warm-gray);
+
+p { font-family: var(--font-sans); font-weight: 400; }
+a { color: inherit; text-decoration: none; }
+ul { list-style: none; }
+img { display: block; max-width: 100%; }
+
+/* ---- Shared Utilities ---- */
+.rule {
+  border: none;
+  border-top: var(--rule-width) solid var(--rule);
+  margin: 0;
 }
+
+.rule--thick {
+  border-top-width: 3px;
+  border-color: var(--ink);
+}
+
+.eyebrow {
+  font-family: var(--font-sans);
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--ink-light);
+}
+
+/* Neon highlight utilities */
+.highlight-yellow {
+  background: linear-gradient(transparent 55%, rgba(230, 242, 0, 0.5) 55%);
+}
+
+.highlight-blue {
+  background: linear-gradient(transparent 55%, rgba(0, 207, 255, 0.35) 55%);
+}
+
+/* Scroll animation */
+.fade-up {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.fade-up.visible { opacity: 1; transform: translateY(0); }
 
 /* Selection */
 ::selection {
-  background: var(--color-black);
-  color: var(--color-white);
+  background: var(--neon-yellow);
+  color: var(--ink);
 }
 
-/* Typography base */
-h1, h2, h3, h4, h5 {
-  font-family: var(--font-serif);
-  font-weight: 300;
-  letter-spacing: 0.02em;
-  line-height: 1.1;
-}
-
-p {
-  font-family: var(--font-sans);
-  font-weight: 300;
-  letter-spacing: 0.04em;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-img {
-  display: block;
-  max-width: 100%;
-}
-
-ul {
-  list-style: none;
-}
-
-/* Scroll animation utility */
-.fade-up {
-  opacity: 0;
-  transform: translateY(32px);
-  transition: opacity 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-              transform 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-.fade-up.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.fade-in {
-  opacity: 0;
-  transition: opacity 1.1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-.fade-in.visible {
-  opacity: 1;
-}
+/* Scrollbar */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--paper-dark); }
+::-webkit-scrollbar-thumb { background: var(--ink-light); }

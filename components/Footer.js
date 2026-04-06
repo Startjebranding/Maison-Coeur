@@ -1,4 +1,3 @@
-import Link from 'next/link'
 import styles from './Footer.module.css'
 
 export default function Footer() {
@@ -6,57 +5,74 @@ export default function Footer() {
 
   return (
     <footer className={styles.footer} id="contact">
+      <hr className={styles.ruleTop} />
+
       <div className={styles.inner}>
-        <div className={styles.top}>
-          <p className={styles.logo}>Maison&nbsp;C&#x153;ur</p>
+        {/* Masthead footer */}
+        <div className={styles.mastheadLine}>
+          <span>The Maison C&#x153;ur Gazette</span>
+          <span>&#9632;</span>
+          <span>Vol. I &mdash; {year}</span>
+          <span>&#9632;</span>
+          <span>maisoncoeur.com</span>
+        </div>
 
-          <div className={styles.columns}>
-            <div className={styles.column}>
-              <p className={styles.columnTitle}>Shop</p>
-              <ul className={styles.columnLinks}>
-                <li><Link href="#collection">Collection</Link></li>
-                <li><Link href="#lookbook">Lookbook</Link></li>
-                <li><Link href="#">New Arrivals</Link></li>
-                <li><Link href="#">Sale</Link></li>
-              </ul>
-            </div>
+        <hr className={styles.ruleMid} />
 
-            <div className={styles.column}>
-              <p className={styles.columnTitle}>Brand</p>
-              <ul className={styles.columnLinks}>
-                <li><Link href="#about">About</Link></li>
-                <li><Link href="#">Atelier</Link></li>
-                <li><Link href="#">Sustainability</Link></li>
-              </ul>
-            </div>
+        <div className={styles.grid}>
+          <div className={styles.about}>
+            <p className={styles.colHead}>Maison C&#x153;ur</p>
+            <p className={styles.text}>
+              A clothing atelier for those who move slowly through
+              a world in a hurry. Each season: twelve pieces,
+              three fabrics, one intention.
+            </p>
+          </div>
 
-            <div className={styles.column}>
-              <p className={styles.columnTitle}>Contact</p>
-              <ul className={styles.columnLinks}>
-                <li><Link href="#">info@maisoncoeur.com</Link></li>
-                <li><Link href="#">FAQ</Link></li>
-                <li><Link href="#">Returns</Link></li>
-              </ul>
-            </div>
+          <div>
+            <p className={styles.colHead}>Shop</p>
+            <ul className={styles.links}>
+              <li><a href="#shop">Collection</a></li>
+              <li><a href="#lookbook">Lookbook</a></li>
+              <li><a href="#">New Arrivals</a></li>
+              <li><a href="#">Sale</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <p className={styles.colHead}>Info</p>
+            <ul className={styles.links}>
+              <li><a href="#">About</a></li>
+              <li><a href="#">Shipping & Returns</a></li>
+              <li><a href="#">FAQ</a></li>
+              <li><a href="#">Sustainability</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <p className={styles.colHead}>Contact</p>
+            <ul className={styles.links}>
+              <li><a href="#">info@maisoncoeur.com</a></li>
+              <li><a href="#">Instagram</a></li>
+              <li><a href="#">Pinterest</a></li>
+              <li><a href="#">TikTok</a></li>
+            </ul>
           </div>
         </div>
+
+        <hr className={styles.ruleMid} />
 
         <div className={styles.bottom}>
           <p className={styles.copyright}>
             &copy; {year} Maison C&#x153;ur. All rights reserved.
           </p>
-
-          <div className={styles.social}>
-            <Link href="#" aria-label="Instagram" className={styles.socialLink}>
-              IG
-            </Link>
-            <Link href="#" aria-label="Pinterest" className={styles.socialLink}>
-              PI
-            </Link>
-            <Link href="#" aria-label="TikTok" className={styles.socialLink}>
-              TK
-            </Link>
-          </div>
+          <p className={styles.legal}>
+            <a href="#">Privacy</a>
+            &ensp;&middot;&ensp;
+            <a href="#">Terms</a>
+            &ensp;&middot;&ensp;
+            <a href="#">Cookies</a>
+          </p>
         </div>
       </div>
     </footer>

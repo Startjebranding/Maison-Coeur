@@ -1,0 +1,40 @@
+.ticker {
+  background: var(--ink);
+  overflow: hidden;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.track {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  white-space: nowrap;
+  animation: ticker 28s linear infinite;
+  padding-right: 1.5rem;
+}
+
+.item {
+  font-family: var(--font-sans);
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  color: rgba(244, 240, 230, 0.65);
+  flex-shrink: 0;
+}
+
+.item.neon {
+  color: var(--neon-yellow);
+  letter-spacing: 0.25em;
+}
+
+@keyframes ticker {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-33.333%); }
+}
+
+.ticker:hover .track {
+  animation-play-state: paused;
+}
