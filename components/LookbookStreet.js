@@ -44,7 +44,10 @@ export default function LookbookStreet({ items }) {
         <div className={styles.headerInner}>
           <div className={styles.headerLeft}>
             <p className={styles.sectionLabel}>Street Report</p>
-            <h2 className={styles.sectionTitle}>The Lookbook</h2>
+            <div>
+              <h2 className={styles.sectionTitle}>The Lookbook</h2>
+              <span className={styles.headerGraf} aria-hidden="true">raw.</span>
+            </div>
           </div>
           <p className={styles.headerNote}>
             Photography: Various locations, Spring 2025.<br />

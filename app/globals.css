@@ -4,35 +4,24 @@
    ============================================ */
 
 :root {
-  /* Paper */
   --paper:      #f4f0e6;
   --paper-dark: #ece8db;
   --paper-mid:  #e4dfd0;
-
-  /* Ink */
   --ink:        #1a1a17;
   --ink-mid:    #3d3d38;
   --ink-light:  #6e6e66;
   --rule:       rgba(26, 26, 23, 0.18);
 
-  /* Neon accents — use sparingly */
   --neon-yellow: #e6f200;
   --neon-pink:   #ff1f6e;
   --neon-blue:   #00cfff;
 
-  /* Type */
   --font-serif:    var(--font-playfair), 'Playfair Display', Georgia, serif;
   --font-sans:     var(--font-inter), 'Inter', 'Helvetica Neue', sans-serif;
   --font-graffiti: var(--font-marker), 'Permanent Marker', cursive;
-
-  /* Spacing */
-  --gap: 1.5rem;
-  --rule-width: 1px;
 }
 
-/* ---- Reset ---- */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
 html { scroll-behavior: smooth; }
 
 body {
@@ -46,62 +35,82 @@ body {
   overflow-x: hidden;
 }
 
-/* Paper grain overlay */
+/* Paper grain */
 body::after {
   content: '';
   position: fixed;
   inset: 0;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.88' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  opacity: 0.038;
+  opacity: 0.045;
   pointer-events: none;
   z-index: 9000;
   mix-blend-mode: multiply;
 }
 
-/* ---- Typography ---- */
 h1, h2, h3, h4, h5 {
   font-family: var(--font-serif);
   font-weight: 700;
   line-height: 1.08;
   letter-spacing: -0.01em;
 }
-
-p { font-family: var(--font-sans); font-weight: 400; }
-a { color: inherit; text-decoration: none; }
+p  { font-family: var(--font-sans); font-weight: 400; }
+a  { color: inherit; text-decoration: none; }
 ul { list-style: none; }
 img { display: block; max-width: 100%; }
 
-/* ---- Shared Utilities ---- */
-.rule {
-  border: none;
-  border-top: var(--rule-width) solid var(--rule);
-  margin: 0;
+/* ---- Marker highlight utilities ---- */
+/* Thick marker highlight — like drawn with a highlighter */
+.mark-yellow {
+  background: linear-gradient(120deg, var(--neon-yellow) 0%, var(--neon-yellow) 100%);
+  background-size: 100% 48%;
+  background-repeat: no-repeat;
+  background-position: 0 68%;
+  padding: 0 3px;
 }
 
-.rule--thick {
-  border-top-width: 3px;
-  border-color: var(--ink);
+.mark-pink {
+  background: linear-gradient(120deg, var(--neon-pink) 0%, var(--neon-pink) 100%);
+  background-size: 100% 40%;
+  background-repeat: no-repeat;
+  background-position: 0 72%;
+  padding: 0 3px;
+  opacity: 0.9;
 }
 
-.eyebrow {
-  font-family: var(--font-sans);
-  font-size: 0.6rem;
-  font-weight: 500;
-  letter-spacing: 0.25em;
-  text-transform: uppercase;
-  color: var(--ink-light);
+.mark-blue {
+  background: linear-gradient(120deg, var(--neon-blue) 0%, var(--neon-blue) 100%);
+  background-size: 100% 42%;
+  background-repeat: no-repeat;
+  background-position: 0 70%;
+  padding: 0 3px;
+  opacity: 0.85;
 }
 
-/* Neon highlight utilities */
-.highlight-yellow {
-  background: linear-gradient(transparent 55%, rgba(230, 242, 0, 0.5) 55%);
+/* Spray paint border — rough neon box */
+.spray-box-yellow {
+  border: 3px solid var(--neon-yellow);
+  box-shadow: 0 0 8px rgba(230, 242, 0, 0.4), inset 0 0 4px rgba(230, 242, 0, 0.08);
 }
 
-.highlight-blue {
-  background: linear-gradient(transparent 55%, rgba(0, 207, 255, 0.35) 55%);
+.spray-box-pink {
+  border: 3px solid var(--neon-pink);
+  box-shadow: 0 0 10px rgba(255, 31, 110, 0.35), inset 0 0 4px rgba(255, 31, 110, 0.06);
 }
 
-/* Scroll animation */
+.spray-box-blue {
+  border: 3px solid var(--neon-blue);
+  box-shadow: 0 0 10px rgba(0, 207, 255, 0.3), inset 0 0 4px rgba(0, 207, 255, 0.06);
+}
+
+/* Graffiti sticker — rotated label */
+.sticker {
+  display: inline-block;
+  font-family: var(--font-graffiti);
+  transform: rotate(-3deg);
+  line-height: 1;
+}
+
+/* Scroll anim */
 .fade-up {
   opacity: 0;
   transform: translateY(20px);
@@ -109,13 +118,7 @@ img { display: block; max-width: 100%; }
 }
 .fade-up.visible { opacity: 1; transform: translateY(0); }
 
-/* Selection */
-::selection {
-  background: var(--neon-yellow);
-  color: var(--ink);
-}
-
-/* Scrollbar */
+::selection { background: var(--neon-yellow); color: var(--ink); }
 ::-webkit-scrollbar { width: 4px; }
 ::-webkit-scrollbar-track { background: var(--paper-dark); }
 ::-webkit-scrollbar-thumb { background: var(--ink-light); }

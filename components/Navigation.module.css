@@ -6,10 +6,7 @@
   border-bottom: 3px solid var(--ink);
 }
 
-/* Masthead */
-.masthead {
-  padding: 0.75rem 2rem 0;
-}
+.masthead { padding: 0.75rem 2rem 0; }
 
 .ruleTop {
   border: none;
@@ -36,13 +33,9 @@
   text-transform: uppercase;
 }
 
-.mastheadMeta:last-child {
-  text-align: right;
-}
+.mastheadMeta:last-child { text-align: right; }
 
-.mastheadCenter {
-  text-align: center;
-}
+.mastheadCenter { text-align: center; position: relative; }
 
 .gazetteName {
   font-family: var(--font-serif);
@@ -53,13 +46,39 @@
   color: var(--ink);
 }
 
+/* Neon pink underline stroke on masthead name */
+.gazetteName::after {
+  content: '';
+  display: block;
+  height: 3px;
+  background: var(--neon-pink);
+  width: 60%;
+  margin: 4px auto 0;
+  transform: skewX(-4deg);
+  box-shadow: 0 0 8px rgba(255, 31, 110, 0.5);
+}
+
 .tagline {
   font-family: var(--font-serif);
   font-style: italic;
   font-size: 0.7rem;
   color: var(--ink-light);
-  margin-top: 0.2rem;
+  margin-top: 0.3rem;
   letter-spacing: 0.04em;
+}
+
+/* Graffiti tag in corner of masthead */
+.mastheadGraf {
+  position: absolute;
+  top: -8px;
+  right: -20px;
+  font-family: var(--font-graffiti);
+  font-size: 1rem;
+  color: var(--neon-blue);
+  transform: rotate(8deg);
+  opacity: 0.75;
+  pointer-events: none;
+  text-shadow: 0 0 6px rgba(0, 207, 255, 0.4);
 }
 
 .ruleDouble {
@@ -69,12 +88,12 @@
   box-shadow: 0 2px 0 var(--ink);
 }
 
-/* Nav */
 .nav {
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 0.45rem 2rem;
+  position: relative;
 }
 
 .navLinks {
@@ -91,28 +110,27 @@
   text-transform: uppercase;
   color: var(--ink-mid);
   position: relative;
-  padding-bottom: 2px;
+  padding-bottom: 3px;
   transition: color 0.2s;
 }
 
+/* Thick neon yellow marker underline on hover */
 .navLink::after {
   content: '';
   position: absolute;
   bottom: 0;
-  left: 0;
-  width: 0;
-  height: 2px;
+  left: -2px;
+  right: -2px;
+  height: 3px;
   background: var(--neon-yellow);
-  transition: width 0.25s ease;
+  transform: scaleX(0) skewX(-5deg);
+  transform-origin: left;
+  transition: transform 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  box-shadow: 0 0 6px rgba(230, 242, 0, 0.5);
 }
 
-.navLink:hover {
-  color: var(--ink);
-}
-
-.navLink:hover::after {
-  width: 100%;
-}
+.navLink:hover { color: var(--ink); }
+.navLink:hover::after { transform: scaleX(1) skewX(-5deg); }
 
 .ruleNav {
   border: none;
@@ -120,7 +138,6 @@
   margin: 0;
 }
 
-/* Menu toggle */
 .menuToggle {
   display: none;
   flex-direction: column;
@@ -147,7 +164,7 @@
 .mobileMenu {
   position: fixed;
   inset: 0;
-  background: var(--paper);
+  background: var(--ink);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -157,10 +174,7 @@
   z-index: 90;
 }
 
-.mobileMenu.mobileOpen {
-  opacity: 1;
-  pointer-events: all;
-}
+.mobileMenu.mobileOpen { opacity: 1; pointer-events: all; }
 
 .mobileLinks {
   display: flex;
@@ -170,27 +184,20 @@
 }
 
 .mobileLink {
-  font-family: var(--font-serif);
-  font-size: 2.5rem;
-  font-weight: 700;
-  color: var(--ink);
-  letter-spacing: -0.01em;
+  font-family: var(--font-graffiti);
+  font-size: 2.8rem;
+  color: var(--paper);
+  transition: color 0.2s;
 }
+
+.mobileLink:hover { color: var(--neon-yellow); }
 
 @media (max-width: 680px) {
   .masthead { padding: 0.6rem 1rem 0; }
-
-  .mastheadInner {
-    grid-template-columns: 1fr;
-    grid-template-rows: auto auto;
-    gap: 0.25rem;
-  }
-
+  .mastheadInner { grid-template-columns: 1fr; }
   .mastheadMeta { display: none; }
   .mastheadCenter { grid-column: 1; }
-
   .gazetteName { font-size: clamp(1.2rem, 7vw, 2rem); }
-
   .navLinks { display: none; }
   .menuToggle { display: flex; }
   .nav { justify-content: flex-start; padding: 0.4rem 1rem; min-height: 36px; }

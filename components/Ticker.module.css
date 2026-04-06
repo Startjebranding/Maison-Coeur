@@ -1,10 +1,30 @@
 .ticker {
   background: var(--ink);
   overflow: hidden;
-  height: 32px;
+  height: 36px;
   display: flex;
   align-items: center;
-  border-bottom: 1px solid rgba(255,255,255,0.08);
+  position: relative;
+  border-bottom: 2px solid var(--neon-yellow);
+}
+
+/* Left label */
+.ticker::before {
+  content: 'LIVE';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  padding: 0 0.8rem;
+  font-family: var(--font-sans);
+  font-size: 0.55rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  background: var(--neon-yellow);
+  color: var(--ink);
 }
 
 .track {
@@ -12,22 +32,25 @@
   align-items: center;
   gap: 1.5rem;
   white-space: nowrap;
-  animation: ticker 28s linear infinite;
+  animation: ticker 22s linear infinite;
+  padding-left: 4rem;
   padding-right: 1.5rem;
 }
 
 .item {
   font-family: var(--font-sans);
-  font-size: 0.6rem;
+  font-size: 0.62rem;
   font-weight: 500;
   letter-spacing: 0.22em;
-  color: rgba(244, 240, 230, 0.65);
+  color: rgba(244, 240, 230, 0.7);
   flex-shrink: 0;
 }
 
 .item.neon {
   color: var(--neon-yellow);
-  letter-spacing: 0.25em;
+  font-family: var(--font-graffiti);
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
 }
 
 @keyframes ticker {

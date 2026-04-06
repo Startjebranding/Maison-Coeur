@@ -29,11 +29,12 @@
 }
 
 .ring.expanded {
-  width: 56px;
-  height: 56px;
-  top: -28px;
-  left: -28px;
-  opacity: 0.5;
+  width: 52px;
+  height: 52px;
+  top: -26px;
+  left: -26px;
+  border-color: var(--neon-yellow);
+  opacity: 0.8;
 }
 
 @media (pointer: coarse) {

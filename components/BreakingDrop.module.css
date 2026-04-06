@@ -1,6 +1,6 @@
 .section {
   padding: 2rem;
-  background: var(--paper-dark);
+  background: var(--ink);
   border-top: 3px solid var(--ink);
   border-bottom: 3px solid var(--ink);
 }
@@ -10,48 +10,41 @@
   transform: translateY(20px);
   transition: opacity 0.8s ease, transform 0.8s ease;
 }
-
-.inner.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
+.inner.visible { opacity: 1; transform: translateY(0); }
 
 /* Breaking bar */
 .breakingBar {
   display: flex;
   align-items: center;
   gap: 1.5rem;
-  background: var(--ink);
-  padding: 0.4rem 0.75rem;
+  background: var(--neon-yellow);
+  padding: 0.45rem 0.75rem;
   margin-bottom: 1.5rem;
 }
-
 .breakingLabel {
   font-family: var(--font-sans);
-  font-size: 0.6rem;
-  font-weight: 500;
+  font-size: 0.62rem;
+  font-weight: 700;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--neon-yellow);
+  color: var(--ink);
   white-space: nowrap;
 }
-
 .breakingText {
   font-family: var(--font-sans);
   font-size: 0.62rem;
   letter-spacing: 0.1em;
-  color: rgba(244, 240, 230, 0.55);
+  color: rgba(26, 26, 23, 0.65);
 }
 
 /* Card */
 .card {
   position: relative;
-  border: 1px solid var(--rule);
-  background: var(--paper);
   overflow: hidden;
+  border: 2px solid rgba(244, 240, 230, 0.1);
 }
 
-/* Stamp */
+/* EXCLUSIVE stamp — more aggressive */
 .stamp {
   position: absolute;
   top: 1.5rem;
@@ -59,28 +52,45 @@
   z-index: 10;
   font-family: var(--font-sans);
   font-size: 0.65rem;
-  font-weight: 500;
-  letter-spacing: 0.25em;
+  font-weight: 700;
+  letter-spacing: 0.3em;
   text-transform: uppercase;
   color: var(--neon-yellow);
-  border: 2px solid var(--neon-yellow);
-  padding: 0.25rem 0.6rem;
-  transform: rotate(3deg);
-  opacity: 0.9;
+  border: 3px solid var(--neon-yellow);
+  padding: 0.3rem 0.7rem;
+  transform: rotate(4deg);
+  box-shadow: 0 0 14px rgba(230, 242, 0, 0.5), inset 0 0 8px rgba(230, 242, 0, 0.08);
+  background: rgba(230, 242, 0, 0.06);
 }
 
-/* Graffiti tag */
+/* Big graffiti tag */
 .grafTag {
   position: absolute;
   bottom: 1.5rem;
   left: calc(50% - 1.5rem);
   z-index: 10;
   font-family: var(--font-graffiti);
-  font-size: 1.8rem;
+  font-size: 2.5rem;
   color: var(--neon-pink);
-  transform: rotate(-6deg);
-  opacity: 0.7;
+  transform: rotate(-7deg);
+  opacity: 0.85;
   pointer-events: none;
+  text-shadow: 0 0 12px rgba(255, 31, 110, 0.55);
+  line-height: 1;
+}
+
+/* MC watermark on image */
+.grafWatermark {
+  position: absolute;
+  bottom: 3rem;
+  right: -1rem;
+  z-index: 5;
+  font-family: var(--font-graffiti);
+  font-size: 5rem;
+  color: rgba(230, 242, 0, 0.12);
+  transform: rotate(-15deg);
+  pointer-events: none;
+  line-height: 1;
 }
 
 .cardGrid {
@@ -93,33 +103,35 @@
   position: relative;
   min-height: 520px;
   overflow: hidden;
-  background: var(--paper-mid);
+  background: var(--ink-mid);
 }
-
 .image {
   object-fit: cover;
   object-position: center top;
-  filter: grayscale(18%);
+  filter: grayscale(20%) contrast(1.05);
   transition: transform 0.9s ease;
 }
-
 .cardImage:hover .image { transform: scale(1.04); }
 
+/* Neon blue accent line left edge */
 .accentLine {
   position: absolute;
   left: 0;
   top: 0;
   bottom: 0;
-  width: 3px;
+  width: 4px;
   background: var(--neon-blue);
+  box-shadow: 0 0 12px rgba(0, 207, 255, 0.7);
+  z-index: 4;
 }
 
-/* Content */
+/* Content — dark background */
 .cardContent {
   padding: 2.5rem 2rem 2rem;
   display: flex;
   flex-direction: column;
-  border-left: 1px solid var(--rule);
+  background: #141411;
+  border-left: 1px solid rgba(244, 240, 230, 0.08);
 }
 
 .issue {
@@ -137,13 +149,24 @@
   font-size: clamp(1.8rem, 3.5vw, 2.8rem);
   font-weight: 900;
   line-height: 1.05;
-  color: var(--ink);
+  color: var(--paper);
   margin-bottom: 1.25rem;
+}
+
+/* "Everyone" gets neon pink marker highlight */
+.titleMarked {
+  display: inline;
+  background: linear-gradient(120deg, var(--neon-pink) 0%, var(--neon-pink) 100%);
+  background-size: 100% 45%;
+  background-repeat: no-repeat;
+  background-position: 0 75%;
+  padding: 0 3px;
+  color: var(--paper);
 }
 
 .rule {
   border: none;
-  border-top: 1px solid var(--rule);
+  border-top: 1px solid rgba(244, 240, 230, 0.1);
   margin: 0 0 1.25rem;
 }
 
@@ -151,7 +174,7 @@
   font-family: var(--font-sans);
   font-size: 0.8rem;
   line-height: 1.8;
-  color: var(--ink-mid);
+  color: rgba(244, 240, 230, 0.6);
   margin-bottom: 1rem;
 }
 
@@ -164,9 +187,10 @@
 
 .price {
   font-family: var(--font-serif);
-  font-size: 1.8rem;
+  font-size: 2rem;
   font-weight: 700;
-  color: var(--ink);
+  color: var(--neon-yellow);
+  text-shadow: 0 0 12px rgba(230, 242, 0, 0.4);
 }
 
 .stock {
@@ -177,7 +201,7 @@
   font-size: 0.6rem;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: var(--ink-mid);
+  color: rgba(244, 240, 230, 0.45);
 }
 
 .stockDot {
@@ -185,44 +209,38 @@
   height: 6px;
   border-radius: 50%;
   background: #3aaf5c;
+  box-shadow: 0 0 6px rgba(58, 175, 92, 0.6);
   flex-shrink: 0;
 }
 
+/* CTA — neon yellow on dark */
 .cta {
   display: inline-block;
   font-family: var(--font-sans);
   font-size: 0.65rem;
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: 0.25em;
   text-transform: uppercase;
-  color: var(--paper);
-  background: var(--ink);
+  color: var(--ink);
+  background: var(--neon-yellow);
   padding: 0.7rem 1.5rem;
   margin-top: auto;
   align-self: flex-start;
-  transition: background 0.2s, color 0.2s;
-  border: 2px solid var(--ink);
+  border: 2px solid var(--neon-yellow);
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+  box-shadow: 0 0 14px rgba(230, 242, 0, 0.35);
 }
-
 .cta:hover {
-  background: var(--neon-yellow);
-  color: var(--ink);
-  border-color: var(--neon-yellow);
+  background: transparent;
+  color: var(--neon-yellow);
+  box-shadow: 0 0 20px rgba(230, 242, 0, 0.5);
 }
 
 @media (max-width: 768px) {
   .section { padding: 1.5rem 1rem; }
-
   .cardGrid { grid-template-columns: 1fr; }
-
   .cardImage { min-height: 55vw; }
-
-  .cardContent {
-    border-left: none;
-    border-top: 1px solid var(--rule);
-    padding: 1.5rem 1rem;
-  }
-
+  .cardContent { border-left: none; border-top: 1px solid rgba(244, 240, 230, 0.08); padding: 1.5rem 1rem; }
   .stamp { top: 1rem; right: 1rem; }
   .grafTag { left: auto; right: 1rem; bottom: 1rem; }
 }

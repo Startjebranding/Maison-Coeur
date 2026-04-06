@@ -40,15 +40,15 @@ export default function BreakingDrop() {
                 className={styles.image}
                 sizes="(max-width: 768px) 100vw, 45vw"
               />
-              {/* Blue accent line */}
               <div className={styles.accentLine} aria-hidden="true" />
+              <span className={styles.grafWatermark} aria-hidden="true">MC</span>
             </div>
 
             <div className={styles.cardContent}>
               <p className={styles.issue}>Issue Exclusive</p>
               <h2 className={styles.title}>
                 The Piece<br />
-                <em>Everyone</em><br />
+                <em className={styles.titleMarked}>Everyone</em><br />
                 Will Ask About
               </h2>
 

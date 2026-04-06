@@ -24,6 +24,7 @@ export default function Navigation() {
 
           <div className={styles.mastheadCenter}>
             <p className={styles.gazetteName}>The Maison C&#x153;ur Gazette</p>
+            <span className={styles.mastheadGraf} aria-hidden="true">&#x2665;</span>
             <p className={styles.tagline}>
               &#8220;Worn in silence. Felt in full.&#8221;
             </p>
