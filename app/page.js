@@ -1,6 +1,7 @@
 import Ticker from '@/components/Ticker'
 import Navigation from '@/components/Navigation'
 import HeroFrontPage from '@/components/HeroFrontPage'
+import HeadlinersRow from '@/components/HeadlinersRow'
 import ArticleProducts from '@/components/ArticleProducts'
 import BreakingDrop from '@/components/BreakingDrop'
 import LookbookStreet from '@/components/LookbookStreet'
@@ -71,6 +72,7 @@ export default function HomePage() {
       <Navigation />
       <main>
         <HeroFrontPage />
+        <HeadlinersRow />
         <ArticleProducts products={products} />
         <BreakingDrop />
         <LookbookStreet items={lookbookItems} />
