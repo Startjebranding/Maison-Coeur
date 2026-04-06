@@ -1,36 +1,34 @@
-import { Playfair_Display, Inter, Permanent_Marker } from 'next/font/google'
+import { Cormorant_Garamond, DM_Sans } from 'next/font/google'
 import './globals.css'
 
-const playfair = Playfair_Display({
+const cormorant = Cormorant_Garamond({
   subsets: ['latin'],
-  weight: ['400', '700', '900'],
+  weight: ['300', '400', '500', '600'],
   style: ['normal', 'italic'],
-  variable: '--font-playfair',
+  variable: '--font-cormorant',
   display: 'swap',
 })
 
-const inter = Inter({
+const dmSans = DM_Sans({
   subsets: ['latin'],
   weight: ['300', '400', '500'],
-  variable: '--font-inter',
-  display: 'swap',
-})
-
-const marker = Permanent_Marker({
-  subsets: ['latin'],
-  weight: ['400'],
-  variable: '--font-marker',
+  variable: '--font-dm',
   display: 'swap',
 })
 
 export const metadata = {
-  title: 'Maison Cœur — The Gazette',
-  description: 'New drop live. Limited pieces. Maison Cœur SS25.',
+  title: 'Maison Cœur — Refined quality. Honest pricing.',
+  description: 'Designed with intention. Built for everyday wear. Priced without the luxury markup.',
+  openGraph: {
+    title: 'Maison Cœur',
+    description: 'Refined quality. Honest pricing.',
+    type: 'website',
+  },
 }
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="nl" className={`${playfair.variable} ${inter.variable} ${marker.variable}`}>
+    <html lang="nl" className={`${cormorant.variable} ${dmSans.variable}`}>
       <body>{children}</body>
     </html>
   )

@@ -1,81 +1,35 @@
-import Ticker from '@/components/Ticker'
 import Navigation from '@/components/Navigation'
-import HeroFrontPage from '@/components/HeroFrontPage'
-import HeadlinersRow from '@/components/HeadlinersRow'
-import ArticleProducts from '@/components/ArticleProducts'
-import BreakingDrop from '@/components/BreakingDrop'
-import LookbookStreet from '@/components/LookbookStreet'
+import Hero from '@/components/Hero'
+import ProductGrid from '@/components/ProductGrid'
+import UspBar from '@/components/UspBar'
+import FeaturedProducts from '@/components/FeaturedProducts'
+import BrandStatement from '@/components/BrandStatement'
 import Footer from '@/components/Footer'
-import CustomCursor from '@/components/CustomCursor'
 
-const products = [
-  {
-    id: 1,
-    headline: 'The Overcoat Report',
-    category: 'OUTERWEAR',
-    name: 'Raw Edge Overcoat',
-    price: '€ 485',
-    description: 'Unfinished hems. Deliberate weight. A coat that refuses to apologize for the space it takes.',
-    image: 'https://picsum.photos/seed/mc-p1/600/750',
-    alt: 'Raw edge overcoat — off-white heavy canvas',
-    column: 'FASHION',
-  },
-  {
-    id: 2,
-    headline: 'Form Follows Feeling',
-    category: 'READY TO WEAR',
-    name: 'Draped Column Dress',
-    price: '€ 320',
-    description: 'A study in gravity. Silk that moves like language — slowly, with intention.',
-    image: 'https://picsum.photos/seed/mc-p2/600/750',
-    alt: 'Draped column dress — ivory silk',
-    column: 'STYLE',
-  },
-  {
-    id: 3,
-    headline: 'The New Uniform',
-    category: 'TAILORING',
-    name: 'Deconstructed Blazer',
-    price: '€ 395',
-    description: 'Three seams removed. Zero compromises. The anti-blazer blazer.',
-    image: 'https://picsum.photos/seed/mc-p3/600/750',
-    alt: 'Deconstructed blazer — charcoal',
-    column: 'TAILORING',
-  },
-  {
-    id: 4,
-    headline: 'On the Street: Trousers',
-    category: 'BOTTOMS',
-    name: 'Wide Leg Trouser',
-    price: '€ 245',
-    description: 'Linen that creases like a map. Each fold tells a story of where you have been.',
-    image: 'https://picsum.photos/seed/mc-p4/600/750',
-    alt: 'Wide leg trouser — natural linen',
-    column: 'STREET',
-  },
+// ── Product data (replace with Shopify API calls later) ──────────────
+const allProducts = [
+  { id: 1,  name: 'Raw Edge Overcoat',      price: '€ 485', image: 'https://picsum.photos/seed/mc-p1/600/750', alt: 'Raw Edge Overcoat — natural canvas' },
+  { id: 2,  name: 'Draped Column Dress',    price: '€ 320', image: 'https://picsum.photos/seed/mc-p2/600/750', alt: 'Draped Column Dress — ivory silk' },
+  { id: 3,  name: 'Deconstructed Blazer',   price: '€ 395', image: 'https://picsum.photos/seed/mc-p3/600/750', alt: 'Deconstructed Blazer — charcoal' },
+  { id: 4,  name: 'Wide Leg Trouser',       price: '€ 245', image: 'https://picsum.photos/seed/mc-p4/600/750', alt: 'Wide Leg Trouser — natural linen' },
+  { id: 5,  name: 'Silk Blouse',            price: '€ 195', image: 'https://picsum.photos/seed/mc-p5/600/750', alt: 'Silk Blouse — soft ivory' },
+  { id: 6,  name: 'Column Skirt',           price: '€ 215', image: 'https://picsum.photos/seed/mc-p6/600/750', alt: 'Column Skirt — black crepe' },
+  { id: 7,  name: 'Linen Shirt',            price: '€ 165', image: 'https://picsum.photos/seed/mc-p7/600/750', alt: 'Linen Shirt — off-white' },
+  { id: 8,  name: 'Tailored Short',         price: '€ 175', image: 'https://picsum.photos/seed/mc-p8/600/750', alt: 'Tailored Short — dark grey' },
 ]
 
-const lookbookItems = [
-  { id: 1, image: 'https://picsum.photos/seed/mc-lk1/700/900', caption: 'Look 01 — Overcoat & Wide Leg' },
-  { id: 2, image: 'https://picsum.photos/seed/mc-lk2/700/900', caption: 'Look 02 — Draped Dress' },
-  { id: 3, image: 'https://picsum.photos/seed/mc-lk3/700/900', caption: 'Look 03 — Blazer & Trouser' },
-  { id: 4, image: 'https://picsum.photos/seed/mc-lk4/700/900', caption: 'Look 04 — Street Edit' },
-  { id: 5, image: 'https://picsum.photos/seed/mc-lk5/700/900', caption: 'Look 05 — After Hours' },
-  { id: 6, image: 'https://picsum.photos/seed/mc-lk6/700/900', caption: 'Look 06 — Layered' },
-]
+const featured = allProducts.slice(0, 4)
 
 export default function HomePage() {
   return (
     <>
-      <CustomCursor />
-      <Ticker />
       <Navigation />
       <main>
-        <HeroFrontPage />
-        <HeadlinersRow />
-        <ArticleProducts products={products} />
-        <BreakingDrop />
-        <LookbookStreet items={lookbookItems} />
+        <Hero />
+        <ProductGrid products={allProducts} />
+        <UspBar />
+        <FeaturedProducts products={featured} />
+        <BrandStatement />
       </main>
       <Footer />
     </>
