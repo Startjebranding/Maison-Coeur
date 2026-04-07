@@ -7,15 +7,14 @@
   align-items: flex-end;
 }
 
-.imageWrapper {
+.image {
   position: absolute;
   inset: 0;
-}
-
-.image {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
   object-position: center 40%;
-  filter: grayscale(0%) contrast(1.05);
+  filter: contrast(1.05);
   transition: transform 10s ease;
 }
 .hero:hover .image { transform: scale(1.04); }
