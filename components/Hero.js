@@ -12,9 +12,9 @@ export default function Hero() {
     <section className={styles.hero}>
       <div className={styles.imageWrapper}>
         <Image
-          src="https://picsum.photos/seed/mc-hero-dark/1600/900"
+          src="/hero.jpg"
           alt="Maison Cœur — SS25"
-          fill priority quality={88}
+          fill priority quality={90}
           className={styles.image}
           sizes="100vw"
         />

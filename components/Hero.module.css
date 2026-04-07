@@ -14,8 +14,8 @@
 
 .image {
   object-fit: cover;
-  object-position: center 25%;
-  filter: grayscale(20%) contrast(1.08);
+  object-position: center 40%;
+  filter: grayscale(0%) contrast(1.05);
   transition: transform 10s ease;
 }
 .hero:hover .image { transform: scale(1.04); }
