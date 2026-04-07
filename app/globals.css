@@ -1,73 +1,85 @@
 /* ================================
-   MAISON CŒUR — Design System
+   MAISON CŒUR — Streetwear System
    ================================ */
-
 :root {
-  --white:       #ffffff;
-  --off-white:   #fafaf8;
-  --cream:       #f5f2ec;
-  --light-gray:  #e8e5e0;
-  --mid-gray:    #9a9690;
-  --dark-gray:   #3a3835;
-  --black:       #111110;
-  --accent:      #b8a898;   /* warm muted taupe */
+  --black:      #0a0a0a;
+  --dark:       #111111;
+  --surface:    #191919;
+  --surface-2:  #222222;
+  --border:     rgba(255, 255, 255, 0.07);
+  --text:       #eeebe5;
+  --text-mid:   #6e6b65;
+  --text-dim:   #3a3835;
 
-  --font-serif: var(--font-cormorant), 'Cormorant Garamond', Georgia, serif;
-  --font-sans:  var(--font-dm), 'DM Sans', 'Helvetica Neue', sans-serif;
+  /* Neon — use one at a time, sparingly */
+  --neon-pink:   #ff1f6e;
+  --neon-yellow: #e6f200;
+  --neon-blue:   #00cfff;
 
-  --max-width:  1440px;
-  --padding-x:  clamp(1.5rem, 5vw, 5rem);
+  --font-display: var(--font-display-var), 'Barlow Condensed', 'Arial Narrow', sans-serif;
+  --font-sans:    var(--font-sans-var), 'DM Sans', 'Helvetica Neue', sans-serif;
 
-  --ease:       cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --max-w:   1440px;
+  --pad-x:   clamp(1.25rem, 4vw, 4rem);
+  --ease:    cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Override font vars from Next.js */
+:root {
+  --font-display-var: var(--font-display);
+  --font-sans-var:    var(--font-sans);
 }
 
 /* ---- Reset ---- */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; font-size: 16px; }
+html { scroll-behavior: smooth; }
 body {
-  background: var(--white);
-  color: var(--black);
+  background: var(--black);
+  color: var(--text);
   font-family: var(--font-sans);
   font-weight: 300;
-  line-height: 1.7;
+  line-height: 1.65;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
 }
 
-/* ---- Type ---- */
-h1, h2, h3, h4 {
-  font-family: var(--font-serif);
-  font-weight: 400;
-  line-height: 1.1;
-  letter-spacing: 0.01em;
+/* Grain overlay */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity: 0.032;
+  pointer-events: none;
+  z-index: 8000;
+  mix-blend-mode: overlay;
 }
-p   { font-family: var(--font-sans); }
-a   { color: inherit; text-decoration: none; }
-ul  { list-style: none; }
+
+/* ---- Type ---- */
+h1, h2, h3 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+p  { font-family: var(--font-sans); }
+a  { color: inherit; text-decoration: none; }
+ul { list-style: none; }
 img { display: block; max-width: 100%; }
 
-/* ---- Utility ---- */
-.container {
-  max-width: var(--max-width);
-  margin: 0 auto;
-  padding: 0 var(--padding-x);
-}
-
-/* Scroll reveal */
+/* ---- Scroll reveal ---- */
 .reveal {
   opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.8s var(--ease), transform 0.8s var(--ease);
+  transform: translateY(18px);
+  transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
 }
-.reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
+.reveal.visible { opacity: 1; transform: translateY(0); }
 
 /* Selection */
-::selection { background: var(--black); color: var(--white); }
+::selection { background: var(--neon-pink); color: var(--black); }
 
 /* Scrollbar */
-::-webkit-scrollbar { width: 4px; }
-::-webkit-scrollbar-track { background: var(--cream); }
-::-webkit-scrollbar-thumb { background: var(--light-gray); }
+::-webkit-scrollbar { width: 3px; }
+::-webkit-scrollbar-track { background: var(--dark); }
+::-webkit-scrollbar-thumb { background: var(--surface-2); }

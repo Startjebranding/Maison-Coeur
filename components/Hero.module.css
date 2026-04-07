@@ -1,11 +1,10 @@
 .hero {
   position: relative;
   height: 100svh;
-  min-height: 600px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  min-height: 560px;
   overflow: hidden;
+  display: flex;
+  align-items: flex-end;
 }
 
 .imageWrapper {
@@ -15,98 +14,104 @@
 
 .image {
   object-fit: cover;
-  object-position: center 30%;
-  transition: transform 8s ease;
+  object-position: center 25%;
+  filter: grayscale(20%) contrast(1.08);
+  transition: transform 10s ease;
 }
-.hero:hover .image { transform: scale(1.03); }
+.hero:hover .image { transform: scale(1.04); }
 
 .overlay {
   position: absolute;
   inset: 0;
   background: linear-gradient(
-    to bottom,
-    rgba(0,0,0,0.18) 0%,
-    rgba(0,0,0,0.40) 100%
+    160deg,
+    rgba(10,10,10,0.1) 0%,
+    rgba(10,10,10,0.65) 100%
   );
 }
 
-/* Content */
+/* Off-left content — intentionally not perfectly centered */
 .content {
   position: relative;
   z-index: 2;
-  text-align: center;
+  padding: 0 var(--pad-x) clamp(3rem, 7vh, 5rem);
+  margin-left: 3%;           /* subtle off-center */
   opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 1s var(--ease), transform 1s var(--ease);
-  transition-delay: 0.2s;
-  padding: 0 2rem;
+  transform: translateY(16px);
+  transition: opacity 0.9s var(--ease), transform 0.9s var(--ease);
+  transition-delay: 0.15s;
 }
 .content.visible { opacity: 1; transform: translateY(0); }
 
-.eyebrow {
+.season {
   font-family: var(--font-sans);
-  font-size: 0.65rem;
+  font-size: 0.62rem;
   font-weight: 400;
-  letter-spacing: 0.3em;
+  letter-spacing: 0.28em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.65);
-  margin-bottom: 1.25rem;
+  color: rgba(238,235,229,0.45);
+  margin-bottom: 1rem;
 }
 
 .title {
-  font-family: var(--font-serif);
-  font-size: clamp(3.5rem, 9vw, 8rem);
-  font-weight: 300;
-  letter-spacing: 0.06em;
-  color: var(--white);
-  margin-bottom: 1.1rem;
-  line-height: 1;
+  font-family: var(--font-display);
+  font-size: clamp(5rem, 14vw, 11rem);
+  font-weight: 900;
+  letter-spacing: -0.01em;
+  line-height: 0.9;
+  color: var(--text);
+  margin-bottom: 1rem;
+  text-transform: uppercase;
 }
 
-.tagline {
-  font-family: var(--font-serif);
-  font-style: italic;
-  font-size: clamp(1rem, 2vw, 1.4rem);
+/* Lowercase — intentional contrast */
+.sub {
+  font-family: var(--font-sans);
+  font-size: clamp(0.85rem, 1.5vw, 1.1rem);
   font-weight: 300;
-  color: rgba(255,255,255,0.75);
-  letter-spacing: 0.04em;
+  letter-spacing: 0.12em;
+  color: rgba(238,235,229,0.55);
   margin-bottom: 2.5rem;
 }
 
 .cta {
   display: inline-block;
   font-family: var(--font-sans);
-  font-size: 0.7rem;
-  font-weight: 400;
+  font-size: 0.65rem;
+  font-weight: 500;
   letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--black);
-  background: var(--white);
-  padding: 1rem 2.5rem;
-  transition: background 0.25s, color 0.25s;
-  border: 1px solid var(--white);
+  background: var(--text);
+  padding: 0.85rem 2rem;
+  transition: background 0.2s, color 0.2s;
+  border: 1px solid transparent;
 }
-.cta:hover { background: transparent; color: var(--white); }
+.cta:hover {
+  background: transparent;
+  color: var(--text);
+  border-color: var(--text);
+}
 
-/* Scroll hint */
-.scrollHint {
+/* Corner tag — small detail bottom-right */
+.cornerTag {
   position: absolute;
   bottom: 2rem;
-  left: 50%;
-  transform: translateX(-50%);
+  right: var(--pad-x);
   z-index: 2;
 }
-.scrollLine {
-  display: block;
-  width: 1px;
-  height: 50px;
-  background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.5));
-  animation: drop 2s ease infinite;
-  margin: 0 auto;
+.cornerTag span {
+  font-family: var(--font-sans);
+  font-size: 0.55rem;
+  font-weight: 400;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(238,235,229,0.35);
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
 }
-@keyframes drop {
-  0%   { transform: scaleY(0); transform-origin: top; opacity: 0; }
-  45%  { transform: scaleY(1); transform-origin: top; opacity: 1; }
-  55%  { transform: scaleY(1); transform-origin: bottom; opacity: 1; }
-  100% { transform: scaleY(0); transform-origin: bottom; opacity: 0; }
+
+@media (max-width: 640px) {
+  .content { margin-left: 0; }
+  .cornerTag { display: none; }
 }
